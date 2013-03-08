@@ -72,6 +72,14 @@ var __hasProp = {}.hasOwnProperty,
       }
     };
 
+    Avgrund.prototype.markContents = function() {
+      return this.$el.parents().add(this.$el).siblings().addClass('avgrund-contents');
+    };
+
+    Avgrund.prototype.unmarkContents = function() {
+      return this.$el.parents().add(this.$el).siblings().removeClass('avgrund-contents');
+    };
+
     Avgrund.prototype.show = function() {
       var _this = this;
       this.ensureReferences();
@@ -80,24 +88,25 @@ var __hasProp = {}.hasOwnProperty,
         'click.avgrund': this.onDocumentClick.bind(this),
         'touchstart.avgrund': this.onDocumentClick.bind(this)
       });
+      this.markContents();
       this.$body.append(this.$cover);
-      console.log(this.$cover.length);
-      this.$el.addClass('avgrund-popup-animate');
-      this.$el.removeClass(this.currentState);
-      this.$el.addClass('no-transition');
       setTimeout(function() {
-        _this.$el.removeClass('no-transition');
+        _this.$el.addClass('avgrund-popup-animate');
         return _this.$document.addClass('avgrund-active');
       });
       return this;
     };
 
     Avgrund.prototype.hide = function() {
+      var _this = this;
       this.ensureReferences();
       this.$document.off('.avgrund');
       this.$document.removeClass('avgrund-active');
-      this.$el.removeClass('avgrund-popup-animate');
-      this.$cover.detach();
+      this.$document.one('webkitTransitionEnd msTransitionEnd transitionend', function() {
+        _this.$cover.detach();
+        _this.unmarkContents();
+        return _this.$el.removeClass('avgrund-popup-animate');
+      });
       return this;
     };
 

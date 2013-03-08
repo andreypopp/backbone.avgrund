@@ -51,21 +51,23 @@
         .addClass('avgrund-ready') unless this.$document
       this.$body = $(document.body) unless this.$body
 
+    markContents: ->
+      this.$el.parents().add(this.$el).siblings().addClass('avgrund-contents')
+
+    unmarkContents: ->
+      this.$el.parents().add(this.$el).siblings().removeClass('avgrund-contents')
+
     show: ->
       this.ensureReferences()
       this.$document.on
         'keyup.avgrund': this.onDocumentKeyUp.bind(this)
         'click.avgrund': this.onDocumentClick.bind(this)
         'touchstart.avgrund': this.onDocumentClick.bind(this)
+      this.markContents()
       this.$body.append(this.$cover)
-      console.log this.$cover.length
-
-      this.$el.addClass('avgrund-popup-animate')
-      this.$el.removeClass(this.currentState)
-      this.$el.addClass('no-transition')
 
       setTimeout =>
-        this.$el.removeClass('no-transition')
+        this.$el.addClass('avgrund-popup-animate')
         this.$document.addClass('avgrund-active')
 
       this
@@ -74,8 +76,10 @@
       this.ensureReferences()
       this.$document.off('.avgrund')
       this.$document.removeClass('avgrund-active')
-      this.$el.removeClass('avgrund-popup-animate')
-      this.$cover.detach()
+      this.$document.one 'webkitTransitionEnd msTransitionEnd transitionend', =>
+        this.$cover.detach()
+        this.unmarkContents()
+        this.$el.removeClass('avgrund-popup-animate')
       this
 
     onDocumentKeyUp: (e) ->
