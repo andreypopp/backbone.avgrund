@@ -1,0 +1,13 @@
+{
+  "name": "backbone.avgrund",
+  "version": "0.1.0",
+  "main": [
+    "./backbone.avgrund.js",
+    "./backbone.avgrund.css"
+  ],
+  "dependencies": {
+    "jquery": "~1.9.0",
+    "backbone": "~0.9.10",
+    "underscore": "~1.4.4"
+  }
+}

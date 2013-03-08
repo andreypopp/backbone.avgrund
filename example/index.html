@@ -1,0 +1,71 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Avgrund - A modal UI concept</title>
+
+		<meta name="description" content="A modal concept which aims to give a sense of depth between the page and modal layers">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="viewport" content="width=800, user-scalable=no">
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="../backbone.avgrund.css">
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="backbone.js"></script>
+    <script src="../backbone.avgrund.js"></script>
+
+	</head>
+	
+	<body>
+
+    <aside id="default-popup">
+			<h2>That's all, folks</h2>
+			<p>
+				You can hit ESC or click outside to close the modal. Give it a go to see the reverse transition.
+			</p>
+			<p>
+				If you like this you would probably enjoy <a href="http://lab.hakim.se/meny">Meny</a>, <a href="http://lab.hakim.se/reveal-js">reveal.js</a> and <a href="http://lab.hakim.se/scroll-effects">stroll.js</a>.
+			</p>
+			<button onclick="javascript:closeDialog();">Close</button>
+		</aside>
+
+		<article class="avgrund-contents">
+			<h1>Avgrund</h1>
+			<p>
+				A modal concept which aims to give a sense of depth between the page and modal layers. Click the button below to give it a try.
+			</p>
+			<button onclick="javascript:openDialog();">Open Avgrund</button>
+			<p>
+				Uses CSS transforms to scale components and CSS filters to blur the page. Built for the fun of 
+				it, not intended for any practical use.
+			</p>
+			<p>
+				<em>Avgrund</em> is Swedish for abyss.
+			</p>
+			<small>
+				Created by <a href="http://twitter.com/hakimel">@hakimel</a> / <a
+          href="http://hakim.se/">http://hakim.se</a>
+        <br>
+        Wrapped in Backbone plugin by <a
+          href="http://twitter.com/andreypopp">@andreypopp</a> / <a
+          href="http://andreypopp.com">http://andreypopp.com</a>
+			</small>
+		</article>
+    <script>
+      var popup = new Backbone.Avgrund({el: $('#default-popup')});
+      function openDialog() {
+        popup.show();
+			}
+			function closeDialog() {
+				popup.hide();
+			}
+		</script>
+
+	</body>
+</html>

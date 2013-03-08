@@ -1,0 +1,14 @@
+Excellent Avgrund modal concept by @hakimel packaged as Backbone.View.
+
+    Avgrund = require 'backbone.avgrund'
+
+    class MyModal extends Avgrund
+      render: ->
+        this.$el.html """
+          <p>Hello, world</p>
+          """
+        this
+
+    myModal = new MyModal()
+    myModal.render()
+    $(document.body).append myModal.el

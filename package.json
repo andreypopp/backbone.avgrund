@@ -1,0 +1,31 @@
+{
+  "name": "backbone.avgrund",
+  "version": "0.1.0",
+  "description": "Avgrund modal concept by @hakimel packaged as Backbone.View",
+  "main": "backbone.avgrund.js",
+  "dependencies": {
+    "jquery-browserify": "~1.8.1",
+    "backbone": "~0.9.10",
+    "underscore": "~1.4.4"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/andreypopp/backbone.avgrund.git"
+  },
+  "homepage": "https://github.com/andreypopp/backbone.avgrund",
+  "keywords": [
+      "browser",
+      "backbone",
+      "view",
+      "mvc",
+      "modal",
+      "ui",
+      "avgrund"
+  ],
+  "author": {
+      "name": "Andrey Popp",
+      "email": "8mayday@gmail.com",
+      "url": "http://andreypopp.com"
+  },
+  "license": "MIT"
+}
