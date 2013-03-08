@@ -13,3 +13,8 @@ backbone.avgrund.css: backbone.avgrund.sass
 
 clean:
 	rm -f $(ALL)
+
+publish:
+	git push
+	git push --tags
+	npm publish
