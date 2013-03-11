@@ -92,7 +92,8 @@ var __hasProp = {}.hasOwnProperty,
       this.$body.append(this.$cover);
       setTimeout(function() {
         _this.$el.addClass('avgrund-popup-animate');
-        return _this.$document.addClass('avgrund-active');
+        _this.$document.addClass('avgrund-active');
+        return _this.trigger('show');
       });
       return this;
     };
@@ -105,7 +106,8 @@ var __hasProp = {}.hasOwnProperty,
       this.$document.one('webkitTransitionEnd msTransitionEnd transitionend', function() {
         _this.$cover.detach();
         _this.unmarkContents();
-        return _this.$el.removeClass('avgrund-popup-animate');
+        _this.$el.removeClass('avgrund-popup-animate');
+        return _this.trigger('hide');
       });
       return this;
     };

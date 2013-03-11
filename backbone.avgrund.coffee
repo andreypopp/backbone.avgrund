@@ -34,8 +34,6 @@
       $nodes = $nodes.add($(part))
     $nodes
 
-
-
   class Avgrund extends View
     $cover: $nodify('<div></div>')
     $document: undefined
@@ -69,6 +67,7 @@
       setTimeout =>
         this.$el.addClass('avgrund-popup-animate')
         this.$document.addClass('avgrund-active')
+        this.trigger('show')
 
       this
 
@@ -80,6 +79,7 @@
         this.$cover.detach()
         this.unmarkContents()
         this.$el.removeClass('avgrund-popup-animate')
+        this.trigger('hide')
       this
 
     onDocumentKeyUp: (e) ->
