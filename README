@@ -12,3 +12,6 @@ Excellent Avgrund modal concept by @hakimel packaged as Backbone.View.
     myModal = new MyModal()
     myModal.render()
     $(document.body).append myModal.el
+
+    myModal.show() # also triggers 'show' event
+    myModal.hide() # also triggers 'hide' event
