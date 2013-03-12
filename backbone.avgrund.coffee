@@ -40,6 +40,7 @@
 
     constructor: ->
       super
+      this.shown = false
       this.$el.addClass('avgrund-popup')
       this.$cover = $nodify(this.$cover)
       this.$cover.addClass('avgrund-cover')
@@ -56,6 +57,7 @@
       this.$el.parents().add(this.$el).siblings().removeClass('avgrund-contents')
 
     show: ->
+      this.shown = true
       this.ensureReferences()
       this.$document.on
         'keyup.avgrund': this.onDocumentKeyUp.bind(this)
@@ -72,6 +74,7 @@
       this
 
     hide: ->
+      return unless this.shown
       this.ensureReferences()
       this.$document.off('.avgrund')
       this.$document.removeClass('avgrund-active')
@@ -80,6 +83,7 @@
         this.unmarkContents()
         this.$el.removeClass('avgrund-popup-animate')
         this.trigger('hide')
+        this.shown = false
       this
 
     onDocumentKeyUp: (e) ->

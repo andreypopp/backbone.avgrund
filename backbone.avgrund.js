@@ -58,6 +58,7 @@ var __hasProp = {}.hasOwnProperty,
 
     function Avgrund() {
       Avgrund.__super__.constructor.apply(this, arguments);
+      this.shown = false;
       this.$el.addClass('avgrund-popup');
       this.$cover = $nodify(this.$cover);
       this.$cover.addClass('avgrund-cover');
@@ -82,6 +83,7 @@ var __hasProp = {}.hasOwnProperty,
 
     Avgrund.prototype.show = function() {
       var _this = this;
+      this.shown = true;
       this.ensureReferences();
       this.$document.on({
         'keyup.avgrund': this.onDocumentKeyUp.bind(this),
@@ -100,6 +102,9 @@ var __hasProp = {}.hasOwnProperty,
 
     Avgrund.prototype.hide = function() {
       var _this = this;
+      if (!this.shown) {
+        return;
+      }
       this.ensureReferences();
       this.$document.off('.avgrund');
       this.$document.removeClass('avgrund-active');
@@ -107,7 +112,8 @@ var __hasProp = {}.hasOwnProperty,
         _this.$cover.detach();
         _this.unmarkContents();
         _this.$el.removeClass('avgrund-popup-animate');
-        return _this.trigger('hide');
+        _this.trigger('hide');
+        return _this.shown = false;
       });
       return this;
     };
