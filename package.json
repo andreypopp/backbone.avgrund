@@ -1,10 +1,9 @@
 {
   "name": "backbone.avgrund",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Avgrund modal concept by @hakimel packaged as Backbone.View",
   "main": "backbone.avgrund.js",
   "dependencies": {
-    "jquery-browserify": "~1.8.1",
     "backbone": "~1.0.0",
     "underscore": "~1.4.4"
   },
